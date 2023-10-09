@@ -1,11 +1,11 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from PIL import Image
 import os
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads/'
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload/', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -17,6 +17,10 @@ def upload_image():
         file.save(filename)
         split_image(filename)
         return jsonify({'success': True}), 200
+    
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/image/<filename>', methods=['GET'])
 def serve_image(filename):
