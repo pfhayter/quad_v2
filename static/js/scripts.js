@@ -1,8 +1,9 @@
+document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("uploadForm").addEventListener("submit", function(event) {
     event.preventDefault();
     let formData = new FormData(this);
 
-    fetch('../uploads', {
+    fetch('/upload', {
         method: 'POST',
         body: formData
     })
@@ -36,4 +37,4 @@ document.getElementById("uploadForm").addEventListener("submit", function(event)
     .catch(error => {
         console.error("Error uploading image:", error);
     });
-});
+})});

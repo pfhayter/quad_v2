@@ -1,22 +1,37 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from PIL import Image
 import os
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads/'
 
-@app.route('/upload', methods=['POST'])
-def upload_image():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'}), 400
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-    if file:
+@app.route('/uploadEnhanced', methods=['POST'])
+def upload_images_enhanced():
+    uploaded_files = request.files.getlist('file')
+    processed_files = []
+
+    for file in uploaded_files:
+        if file.filename == '':
+            return jsonify({'error': 'No selected file for one of the files'}), 400
+
         filename = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(filename)
         split_image(filename)
-        return jsonify({'success': True}), 200
+        processed_files.append(filename)
+
+    return jsonify({'success': True, 'filenames': processed_files})
+
+@app.route('/')
+def choice():
+    return render_template('choice.html')
+
+@app.route('/classic')
+def classic():
+    return render_template('classic.html')
+
+@app.route('/enhanced')
+def enhanced():
+    return render_template('enhanced.html')
 
 @app.route('/image/<filename>', methods=['GET'])
 def serve_image(filename):

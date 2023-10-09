@@ -1,7 +1,8 @@
-
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
+    margin: 0;
+    overflow-x: hidden;  /* Prevent any horizontal scroll */
 }
 
 .container {
@@ -24,4 +25,43 @@ body {
 /* Swiper styles */
 .swiper-container {
     height: 300px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+.swiper-slide {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Add a floating button for "Back to Top" */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: #2980b9;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-effect {
+    animation: shake 0.9s;
+    animation-iteration-count: 2;
 }

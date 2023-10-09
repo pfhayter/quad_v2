@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Splitter - Enhanced Mode</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+   
+</head>
+
+<body>
+    <div id="progressBar" style="position: fixed; top: 0; left: 0; height: 4px; width: 0; background-color: #3498db;"></div>
+    <div id="spinner" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">Loading...</div>
+
+    <div class="uploader">
+        <form id="uploadFormEnhanced" enctype="multipart/form-data" action="/uploadEnhanced" method="post">
+            <input type="file" name="file" multiple required>
+            <input type="submit" value="Upload">
+        </form>
+     <button class="uploader">Show Images</button>
+    </div>
+
+   
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="previewGridEnhanced">
+            <!-- Split images (as Swiper slides) will be added here by the JavaScript -->
+        </div>
+        <!-- Optional: Add pagination for swipe navigation -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <button id="scrollTopBtn">Back to Top</button>
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="/static/js/enhanced.js"></script>
+</body>
+
+</html>
