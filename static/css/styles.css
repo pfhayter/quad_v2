@@ -1,0 +1,27 @@
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#previewGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#previewGrid img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Swiper styles */
+.swiper-container {
+    height: 300px;
+}
